@@ -1,0 +1,6 @@
+Limitations:
+- Doesn't support anything other than WPA
+- Doesn't support hidden SSIDs
+
+Tips:
+- If using default sizes, slice with 100% infill (aka solid) so it doesn't have holes.

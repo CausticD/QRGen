@@ -1,18 +1,21 @@
 include<data.scad>;
 
-code_width_x = 8;
-code_width_y = 8;
-code_height = 0.5;
+code_width_x = 80;
+code_width_y = 80;
+code_height = 1;
 
-base_height = 0.5;
+base_height = 1;
 
-wall_height = 0.5;
+wall_height = 1;
+
+border_outer = 10;
+border_inner = 7.5;
 
 $fn = 100;
 
 // Base
 
-linear_extrude(height = base_height) offset(r = 1) {
+linear_extrude(height = base_height) offset(r = border_outer) {
     square([code_width_x,code_width_y], center = true);
 }
 
@@ -20,11 +23,11 @@ linear_extrude(height = base_height) offset(r = 1) {
 
 translate([0,0,base_height]) difference() {
 
-    linear_extrude(height = wall_height) offset(r = 1) {
+    linear_extrude(height = wall_height) offset(r = border_outer) {
         square([code_width_x,code_width_y], center = true);
     }
 
-    translate([0,0,-0.01]) linear_extrude(height = wall_height+0.02) offset(r = 0.75) {
+    translate([0,0,-0.01]) linear_extrude(height = wall_height+0.02) offset(r = border_inner) {
         square([code_width_x,code_width_y], center = true);
     }
 

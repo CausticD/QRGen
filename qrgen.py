@@ -5,7 +5,9 @@ import qrcode
 import math
 import argparse
 
-parser = argparse.ArgumentParser(description='Generate data for QR code for provided Wifi network')
+# Notes: Assumes WPA security and the SSID not to be hidden.
+
+parser = argparse.ArgumentParser(description='Generate data for QR code for provided Wifi network into scad file.')
 parser.add_argument('SSID', help='The WiFi networks SSID')
 parser.add_argument('Password', help='The password for that SSDID')
 args = parser.parse_args()

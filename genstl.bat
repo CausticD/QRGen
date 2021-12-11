@@ -1,0 +1,1 @@
+"C:\Program Files\OpenSCAD\openscad.exe" -o qrcode.stl qrcode.scad
