@@ -1,0 +1,1 @@
+@c:\python39\python.exe qrgen.py %1 %2 %3 %4
