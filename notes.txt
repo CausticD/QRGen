@@ -6,6 +6,11 @@ Requirements:
 Limitations:
 - WEP and hidden SSIDs are untested. WPA2-EAP not supported
 
+Guide:
+1) Run GenQRData.bat {SSID} {Password}
+2) Run GenSTL.bat
+3) Slice (don't forget colour change) and print
+
 Tips:
 - The slicer will need to be set up to do a colour change at the right layer. White first, then black.
 - If using default sizes, slice with 100% infill (aka solid) so it doesn't have holes.
