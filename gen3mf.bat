@@ -1,0 +1,1 @@
+"C:\Program Files\OpenSCAD\openscad.exe" -o qrcode.3mf qrcode.scad
