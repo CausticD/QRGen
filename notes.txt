@@ -1,6 +1,12 @@
+Requirements:
+- Requires Python 3.X and the qrcode package from pip.
+- Needs OpenSCAD to be installed. Edit GenSTL.bat to match path.
+- Some slicing software to actually print it.
+
 Limitations:
-- Doesn't support anything other than WPA
-- Doesn't support hidden SSIDs
+- WEP and hidden SSIDs are untested. WPA2-EAP not supported
 
 Tips:
+- The slicer will need to be set up to do a colour change at the right layer. White first, then black.
 - If using default sizes, slice with 100% infill (aka solid) so it doesn't have holes.
+- After generating files, slicing and printing, run the CleanTempFiles.bat to remove files with sensitive data.
