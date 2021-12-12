@@ -1,15 +1,15 @@
 include<data.scad>;
 
-code_width_x = 80;
-code_width_y = 80;
+code_width_x = 50;
+code_width_y = 50;
 code_height = 1;
 
 base_height = 1;
 
 wall_height = 1;
 
-border_outer = 10;
-border_inner = 7.5;
+border_outer = 6;
+border_inner = 4;
 
 $fn = 100;
 
