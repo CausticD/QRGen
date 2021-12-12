@@ -43,5 +43,5 @@ color("yellow") scale([code_width_x/qrsize, code_width_y/qrsize, 1.0])
         for(val_y = [0:qrsize-1])
             for(val_x = [0:qrsize-1])
                 if(qrdata[val_y*qrsize+val_x] > 0)
-                    translate([val_x,val_y,0]) cube([1,1,code_height]);
+                    translate([val_x,qrsize-val_y,0]) cube([1,1,code_height]);
     }
