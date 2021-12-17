@@ -21,6 +21,7 @@ Tips:
 - If using default sizes, slice with 100% infill (aka solid) so it doesn't have holes.
 - After generating files, slicing and printing, run the CleanTempFiles.bat to remove files with sensitive data.
 - The default size is 62mmx62mmx2mm with the base being 1mm and the QR code and border being 1mm. Don't make the QR code any taller as it hurts readability. All easy to change if required.
+- The STL generation takes a little time. Perhaps a minute. This is mostly due to the QR code part.
 
 How it works:
 1) Step one uses a python script to take the SSID and password from the command line, create the specific WIFI string and convert into a QR code. It then exports this data as an array in an .SCAD file that is used in step 2. It doesn't export an image as SCAD has limited ability to read them in and create the vertical walls needed.
