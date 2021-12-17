@@ -13,6 +13,24 @@ import argparse
 # - Always using low error correct for the QR code.
 # - Should scale the QR code up in size if needed.
 
+def ConvertLine(data, start, end):
+	i = start
+	count = 0
+	c = 0
+	while i < end:
+		while data[i]:
+			i+=1
+		x=i
+		y=j
+		while i<end and not mylist[i]:
+			i+=1
+			c+=1
+		
+		f.write(str(x-start)+','+str(y)+','+str(c) + ' , ')
+		c = 0
+		count+=1
+	return count
+
 parser = argparse.ArgumentParser(description='Generate data for QR code for provided Wifi network into scad file.')
 parser.add_argument('SSID', help='The WiFi networks SSID.')
 parser.add_argument('Password', help='The password for that SSDID.')
@@ -46,7 +64,6 @@ img = qr.make_image(fill_color="black", back_color="white")
 
 mylist = list(img.getdata())
 size = int(math.sqrt(len(mylist)))
-count = 0;
 
 if not args.quiet:
 	print(data)
@@ -55,16 +72,13 @@ if not args.quiet:
 f = open("data.scad", "w")
 
 f.write("qrsize = " + str(size) + ";\n")
-f.write("qrdata = [")
+f.write("qrdata2 = [")
+
+count = 0;
 
 for j in range(0, size):
-	for i in range(0, size):
-		val = mylist[count]
-		if val:
-			f.write("0, ")
-		else:
-			f.write("1, ")
-		count += 1
-	f.write("\n")
-f.write("];")
+	count += ConvertLine(mylist, j*size, (j+1)*size)
+
+f.write("];\n")
+f.write("qrdata2count = " + str(count))
 f.close()

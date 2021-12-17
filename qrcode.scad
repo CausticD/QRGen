@@ -38,8 +38,11 @@ translate([0,0,base_height]) difference() {
 color("yellow") scale([code_width_x/qrsize, code_width_y/qrsize, 1.0])
     translate([-qrsize/2, -qrsize/2, base_height])
     {
-        for(val_y = [0:qrsize-1])
-            for(val_x = [0:qrsize-1])
-                if(qrdata[val_y*qrsize+val_x] > 0)
-                    translate([val_x,qrsize-val_y-1,0]) cube([1,1,code_height]);
+        for(triplet = [0:qrdata2count-1])
+        {
+            x = qrdata2[triplet*3+0];
+            y = qrdata2[triplet*3+1];
+            l = qrdata2[triplet*3+2];
+            translate([x,qrsize-y-1,0]) cube([l,1,code_height]);
+        }
     }
