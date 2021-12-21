@@ -71,6 +71,7 @@ if not args.quiet:
 
 f = open("data.scad", "w")
 
+f.write('ssidname = "' + args.SSID + '";\n')
 f.write("qrsize = " + str(size) + ";\n")
 f.write("qrdata2 = [")
 
@@ -80,5 +81,5 @@ for j in range(0, size):
 	count += ConvertLine(mylist, j*size, (j+1)*size)
 
 f.write("];\n")
-f.write("qrdata2count = " + str(count))
+f.write("qrdata2count = " + str(count) + ";")
 f.close()
