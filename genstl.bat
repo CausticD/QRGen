@@ -1,1 +1,1 @@
-"C:\Program Files\OpenSCAD\openscad.exe" -o qrcode.stl qrcode.scad
+"C:\Program Files\OpenSCAD\openscad.exe" -o qrcode.stl -p qrcode.json -P Defaults qrcode.scad

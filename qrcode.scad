@@ -1,16 +1,33 @@
 include<data.scad>;
 
-code_width_x = 50;
-code_width_y = 50;
-code_height = 1;
+/* [Base] */
 
-base_height = 1;
+// The thickness (mm) of the base. Usually the bit printed in white.
+base_height = 1; // [0.5:0.5:5]
 
-wall_height = 1;
+/* [QR Code] */
 
-border_outer = 6;
-border_inner = 4;
+// The size (mm) of just the QR code in both X and Y. Overall dimensions bigger.
+QR_code_size = 50;  // [20:5:120]
+// The height/depth (mm) of the QR code. Taller makes it harder to scan due to shadows.
+QR_code_height = 1; // [0.5:0.5:2.5]
 
+/* [Border and Wall] */
+
+// The width (mm) of the rounded border around the QR Code.
+border_width = 4; // [0:1:10]
+// The thickness (mm) of the wall around the outside.
+wall_height = 1; // [0.5:0.5:2.5]
+// The width (mm) of the raised wall around the outside.
+wall_width = 2; // [0:1:5]
+
+module __Customizer_Limit__ () {}
+
+code_width_x = QR_code_size;
+code_width_y = QR_code_size;
+code_height = QR_code_height;
+border_inner = border_width;
+border_outer = border_width + wall_width;
 $fn = 100;
 
 // Base
@@ -21,16 +38,19 @@ linear_extrude(height = base_height) offset(r = border_outer) {
 
 // Wall
 
-translate([0,0,base_height]) difference() {
+if(wall_width > 0)
+{
+    translate([0,0,base_height]) difference() {
 
-    linear_extrude(height = wall_height) offset(r = border_outer) {
-        square([code_width_x,code_width_y], center = true);
+        linear_extrude(height = wall_height) offset(r = border_outer) {
+            square([code_width_x,code_width_y], center = true);
+        }
+
+        translate([0,0,-0.01]) linear_extrude(height = wall_height+0.02) offset(r = border_inner) {
+            square([code_width_x,code_width_y], center = true);
+        }
+
     }
-
-    translate([0,0,-0.01]) linear_extrude(height = wall_height+0.02) offset(r = border_inner) {
-        square([code_width_x,code_width_y], center = true);
-    }
-
 }
 
 // QR Code

@@ -1,0 +1,21 @@
+{
+    "parameterSets": {
+        "Defaults": {
+            "QR_code_height": "1",
+            "QR_code_size": "50",
+            "base_height": "1",
+            "border_width": "4",
+            "wall_height": "1",
+            "wall_width": "2"
+        },
+        "Minimal": {
+            "QR_code_height": "0.5",
+            "QR_code_size": "50",
+            "base_height": "1",
+            "border_width": "1",
+            "wall_height": "0",
+            "wall_width": "0"
+        }
+    },
+    "fileFormatVersion": "1"
+}
