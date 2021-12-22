@@ -4,7 +4,7 @@ Offline (Local) STL/3MF generator for WiFi QR codes you can 3D print based aroun
 
 Requirements:
 - Requires Python 3.X (https://www.python.org/) and the qrcode package (https://pypi.org/project/qrcode/) from pip.
-- Needs OpenSCAD (https://openscad.org/) to be installed. Edit GenSTL.bat and/or Gen3MF.bat to match path.
+- Needs OpenSCAD (https://openscad.org/) to be installed. Edit GenSTL.bat (and/or Gen3MF.bat and GenPNG.bat) to match path.
 - Some slicing software to actually print it and two contrasting filament colours.
 
 Limitations:
@@ -13,8 +13,12 @@ Limitations:
 
 Guide:
 1) Run GenQRData.bat {SSID} {Password}
+1B) (Optional) Run GenPNG.bat to (quickly) create a PNG file with a preview to test.
 2) Run GenSTL.bat (or Gen3MF.bat) (Takes a minute)
 3) Slice (don't forget colour change) and print
+
+Interactive Mode:
+The main SCAD file now uses the OpenSCAD Customizer which allows altering size etc. There are two presets available as well. Default is a good all round look, minimal shows how to switch all but the QR COde off.
 
 Tips:
 - The slicer will need to be set up to do a colour change at the right layer. White first, then black.
