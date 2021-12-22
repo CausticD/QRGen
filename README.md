@@ -13,9 +13,9 @@ Limitations:
 
 Guide:
 1) Run GenQRData.bat {SSID} {Password}
-1B) (Optional) Run GenPNG.bat to (quickly) create a PNG file with a preview to test.
-2) Run GenSTL.bat (or Gen3MF.bat) (Takes a minute)
-3) Slice (don't forget colour change) and print
+2) (Optional) Run GenPNG.bat to (quickly) create a PNG file with a preview to test.
+3) Run GenSTL.bat (or Gen3MF.bat) (Takes a minute)
+4) Slice (don't forget colour change) and print
 
 Interactive Mode:
 The main SCAD file now uses the OpenSCAD Customizer which allows altering size etc. There are two presets available as well. Default is a good all round look, minimal shows how to switch all but the QR COde off.
