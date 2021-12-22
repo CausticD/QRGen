@@ -92,6 +92,6 @@ color("yellow") scale([code_width_x/qrsize, code_width_y/qrsize, 1.0])
             x = qrdata2[triplet*3+0];
             y = qrdata2[triplet*3+1];
             l = qrdata2[triplet*3+2];
-            translate([x,qrsize-y-1,0]) cube([l,0.99,code_height]);     // Setting this to slightly less than 1 solves the warning message.
+            translate([x,qrsize-y-1,0]) cube([l,1,code_height]);     // Setting this to slightly less than 1 solves the warning message, but the resulting file slices worse.
         }
     }
