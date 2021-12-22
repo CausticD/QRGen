@@ -4,7 +4,7 @@ Offline (Local) STL/3MF generator for WiFi QR codes you can 3D print based aroun
 
 Requirements:
 - Requires Python 3.X (https://www.python.org/) and the qrcode package (https://pypi.org/project/qrcode/) from pip.
-- Needs OpenSCAD (https://openscad.org/) to be installed. Edit GenSTL.bat (and/or Gen3MF.bat and GenPNG.bat) to match path.
+- Needs OpenSCAD 2021.01 (https://openscad.org/) to be installed. Edit GenSTL.bat (and/or Gen3MF.bat and GenPNG.bat) to match path.
 - Some slicing software to actually print it and two contrasting filament colours.
 
 Limitations:
@@ -13,7 +13,7 @@ Limitations:
 
 Guide:
 1) Run GenQRData.bat {SSID} {Password}
-2) (Optional) Run GenPNG.bat to (quickly) create a PNG file with a preview to test.
+2) (Optional) Run GenPNG.bat to quickly create a preview PNG file with a to test.
 3) Run GenSTL.bat (or Gen3MF.bat) (Takes a minute)
 4) Slice (don't forget colour change) and print
 
@@ -25,7 +25,8 @@ Tips:
 - If using default sizes, slice with 100% infill (aka solid) so it doesn't have holes.
 - After generating files, slicing and printing, run the CleanTempFiles.bat to remove files with sensitive data.
 - The default size is 62mmx62mmx2mm with the base being 1mm and the QR code and border being 1mm. Don't make the QR code any taller as it hurts readability. All easy to change if required.
-- The STL generation takes a little time. Perhaps a minute. The QR code part has now been sped up by about 30%, by combining adjacent squares. 
+- The STL generation takes a little time. Perhaps a minute. The QR code part has now been sped up by about 30%, by combining adjacent squares.
+- The output will display "WARNING: Object may not be a valid 2-manifold and may need repair!". This is because some of the QR Code square will touch by diagonal corners only. This can be fixed, see the SCAD file for how, but it results in a worse file after slicing.
 
 How it works:
 1) Step one uses a python script to take the SSID and password from the command line, create the specific WIFI string and convert into a QR code. It then exports this data as an array in an .SCAD file that is used in step 2. It doesn't export an image as SCAD has limited ability to read them in and create the vertical walls needed.
