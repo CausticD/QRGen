@@ -53,7 +53,7 @@ function text_space() = text_show?text_auto_size?text_space_auto:text_vert_space
 
 // Base
 
-translate([0,-text_space()/2,0])
+color("white") translate([0,-text_space()/2,0.001])
     linear_extrude(height = base_height) offset(r = border_outer) {
         square([code_width_x,code_width_y+text_space()], center = true);
     }
@@ -62,23 +62,22 @@ translate([0,-text_space()/2,0])
 
 if(wall_width > 0)
 {
-    translate([0,-text_space()/2,base_height]) difference() {
+    translate([0,-text_space()/2,base_height]) color("black") difference() {
 
         linear_extrude(height = wall_height) offset(r = border_outer) {
             square([code_width_x,code_width_y+text_space()], center = true);
         }
 
-        translate([0,0,-0.01]) linear_extrude(height = wall_height+0.02) offset(r = border_inner) {
+        translate([0,0,-1]) linear_extrude(height = wall_height+2) offset(r = border_inner) {
             square([code_width_x,code_width_y+text_space()], center = true);
         }
-
     }
 }
 
 // Text
 if(text_show)
 {
-    color("green") translate([0, -code_width_y/2 - text_space() + text_offset, base_height + text_height/2])
+    color("black") translate([0, -code_width_y/2 - text_space() + text_offset, base_height + text_height/2])
         linear_extrude(text_height, center = true, convexity = 4)
             resize([code_width_x, 0], auto = true)
             {
@@ -89,7 +88,7 @@ if(text_show)
 
 // QR Code
 
-color("yellow") scale([code_width_x/qrsize, code_width_y/qrsize, 1.0])
+color("black") scale([code_width_x/qrsize, code_width_y/qrsize, 1.0])
     translate([-qrsize/2, -qrsize/2, base_height])
     {
         for(triplet = [0:qrdata2count-1])
