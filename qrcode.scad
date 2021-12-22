@@ -23,6 +23,8 @@ wall_width = 2; // [0:1:5]
 
 /* [Text] */
 
+// Add some text under the QR code.
+text_show = true;
 // Display the SSID name. Set to false to enter your own string.
 text_use_ssid = true;
 // Auto size the space based on the text.
@@ -32,7 +34,7 @@ text_msg = "Testtest";
 // The height (mm) of the text vertically.
 text_height = 1; // [0.5:0.5:2.5]
 // The extra space (mm) for the text to go.
-text_vert_space = 10; // [6:1:80]
+text_vert_space = 10; // [4:1:80]
 // Tweak the vertical offset (mm).
 text_offset = 2; // [0:0.5:30]
 
@@ -47,7 +49,7 @@ text_space_auto = ((QR_code_size * 1.33) / len(ssidname));
 
 $fn = 100;
 
-function text_space() = text_auto_size?text_space_auto:text_vert_space;
+function text_space() = text_show?text_auto_size?text_space_auto:text_vert_space:0;
 
 // Base
 
@@ -74,13 +76,16 @@ if(wall_width > 0)
 }
 
 // Text
-color("green") translate([0, -code_width_y/2 - text_space() + text_offset, base_height + text_height/2])
-    linear_extrude(text_height, center = true, convexity = 4)
-        resize([code_width_x, 0], auto = true)
-        {
-            if(text_use_ssid) text(ssidname, valign = "center", halign = "center");
-            else text(text_msg, valign = "center", halign = "center");
-        }
+if(text_show)
+{
+    color("green") translate([0, -code_width_y/2 - text_space() + text_offset, base_height + text_height/2])
+        linear_extrude(text_height, center = true, convexity = 4)
+            resize([code_width_x, 0], auto = true)
+            {
+                if(text_use_ssid) text(ssidname, valign = "center", halign = "center");
+                else text(text_msg, valign = "center", halign = "center");
+            }
+}
 
 // QR Code
 
@@ -92,6 +97,6 @@ color("yellow") scale([code_width_x/qrsize, code_width_y/qrsize, 1.0])
             x = qrdata2[triplet*3+0];
             y = qrdata2[triplet*3+1];
             l = qrdata2[triplet*3+2];
-            translate([x,qrsize-y-1,0]) cube([l,1,code_height]);     // Setting this to slightly less than 1 solves the warning message, but the resulting file slices worse.
+            translate([x,qrsize-y-1,0]) cube([l,1,code_height]);     // Setting this cube size to slightly less than 1 solves the warning message, but the resulting file slices worse.
         }
     }

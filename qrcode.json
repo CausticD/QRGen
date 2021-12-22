@@ -5,6 +5,13 @@
             "QR_code_size": "50",
             "base_height": "1",
             "border_width": "4",
+            "text_auto_size": "true",
+            "text_height": "1",
+            "text_msg": "Testtest",
+            "text_offset": "2",
+            "text_show": "true",
+            "text_use_ssid": "true",
+            "text_vert_space": "10",
             "wall_height": "1",
             "wall_width": "2"
         },
@@ -13,6 +20,13 @@
             "QR_code_size": "50",
             "base_height": "1",
             "border_width": "1",
+            "text_auto_size": "true",
+            "text_height": "1",
+            "text_msg": "Testtest",
+            "text_offset": "2",
+            "text_show": "false",
+            "text_use_ssid": "true",
+            "text_vert_space": "10",
             "wall_height": "0",
             "wall_width": "0"
         }
